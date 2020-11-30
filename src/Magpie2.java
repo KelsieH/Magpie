@@ -80,7 +80,7 @@ public class Magpie2 {
 			response = "You don't say.";
 		} else if (whichResponse == 4) {
 			response = "That's so cool!";
-		} else if (whichReponse == 5) {
+		} else if (whichResponse == 5) {
 			response = "I see.";
 		}
 
