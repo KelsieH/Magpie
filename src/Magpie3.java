@@ -27,15 +27,28 @@ public class Magpie3 {
 	 */
 	public String getResponse(String statement) {
 		String response = "";
-		if (statement.length() == 0) {
-			response = "Say something, please.";
-		} else if (findKeyword(statement, "no") >= 0) {
+		if (statement.indexOf("no") >= 0) {
 			response = "Why so negative?";
-		} else if (findKeyword(statement, "mother") >= 0
-				|| findKeyword(statement, "father") >= 0
-				|| findKeyword(statement, "sister") >= 0
-				|| findKeyword(statement, "brother") >= 0) {
+		} else if (statement.trim().length() <= 0) {
+			response = "Is anyone there?";
+		} else if (statement.indexOf("mother") >= 0
+				|| statement.indexOf("father") >= 0
+				|| statement.indexOf("sister") >= 0
+				|| statement.indexOf("brother") >= 0) {
 			response = "Tell me more about your family.";
+		} else if (statement.indexOf("dog") >= 0
+				|| statement.indexOf("cat") >= 0) {
+			response = "Tell me more about your pets."; 
+		} else if (statement.indexOf("Mr.") >= 0) {
+			response = "He sounds like a great teacher!";
+		} else if (statement.indexOf("food") >= 0) {
+			response = "What's your favorite kind of food?";
+		} else if (statement.indexOf("Mrs.") >= 0) {
+			response = "She sounds like a great teacher!";
+		} else if (statement.indexOf("yes") >= 0) {
+			response = "I'm glad you agree!";
+		} else if (statement.indexOf("maybe") >= 0) {
+			response = "Are you sure about that?";
 		} else {
 			response = getRandomResponse();
 		}
@@ -121,7 +134,7 @@ public class Magpie3 {
 	 * @return a non-committal string
 	 */
 	private String getRandomResponse() {
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -134,6 +147,10 @@ public class Magpie3 {
 			response = "Do you really think so?";
 		} else if (whichResponse == 3) {
 			response = "You don't say.";
+		} else if (whichResponse == 4) {
+			response = "That's so cool!";
+		} else if (whichResponse == 5) {
+			response = "I see.";
 		}
 
 		return response;
